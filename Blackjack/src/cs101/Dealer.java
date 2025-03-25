@@ -45,7 +45,7 @@ public class Dealer {
 		}
 
 		this.shuffle();
-		// System.out.println(Arrays.toString(this.deck));
+		System.out.println(Arrays.toString(this.deck));
 
 	}
 
@@ -86,6 +86,39 @@ public class Dealer {
 		this.dealingIndex++;
 
 		return dealt;
+
+	}
+
+	public int cardValue(String card) {
+		String[] split = card.split(" ");
+
+		if (split[1].equals("JACK")) {
+			return 10;
+		} else if (split[1].equals("QUEEN")) {
+			return 10;
+		} else if (split[1].equals("KING")) {
+			return 10;
+		} else if (split[1].equals("ACE")) {
+			Scanner input = new Scanner(System.in);
+			System.out.println("1 or 11?");
+
+			String in = input.nextLine();
+			return Integer.parseInt(in);
+		} else {
+			return Integer.parseInt(split[1]);
+		}
+
+	}
+
+	public int handValue(String[] cards) {
+		int value = 0;
+
+		for (int i = 0; i < cards.length; i++) {
+			value += this.cardValue(cards[i]);
+
+		}
+
+		return value;
 
 	}
 
